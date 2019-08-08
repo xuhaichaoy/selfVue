@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo</title>
+    <script src="./js/appData.js"></script>
+
+</head>
+<style>
+    #app {
+        text-align: center;
+    }
+</style>
+<body>
+    <div id="app">
+        <h2>{{title}}</h2>
+        <input v-model="name">
+        <h1>{{name}}</h1>
+        <input type="text" v-model="input" @keyUp="blur" @click="click">
+        <button @click="clickMe">click me!</button>
+    </div>
+</body>
+<script type="text/javascript">
+     new Chao({
+        el: '#app',
+        data: {
+            title: 'hello world',
+            name: 'canfoo',
+            input: '111111111'
+        },
+        mounted: function () {
+            this.title = '你好'
+        },
+        methods: {
+            clickMe: function () {
+                this.title = 'hello world'
+            },
+            blur: function() {
+                console.log(111111111111)
+            },
+            click: function() {
+                console.log(2222222222222)
+            }
+        }
+        
+    });
+
+</script>
+</html>
