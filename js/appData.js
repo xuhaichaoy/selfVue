@@ -133,7 +133,13 @@ Compile.prototype = {
         var self = this;
         Array.prototype.forEach.call(nodeAttrs, function(attr) {
             var attrName = attr.name;
-            if (self.isDirective(attrName)) {
+            var isDirect = self.isDirective(attrName)
+            if (isDirect) {
+                if(isDirect === 2) {
+                    // '@' 事件
+                    
+                    attrName = attrName.replace('@', 'v-on:')
+                }
                 var exp = attr.value;
                 var dir = attrName.substring(2);
                 if (self.isEventDirective(dir)) {  // 事件指令
@@ -186,10 +192,19 @@ Compile.prototype = {
         node.value = typeof value == 'undefined' ? '' : value;
     },
     isDirective: function(attr) {
-        return attr.indexOf('v-') == 0;
+        if(attr.indexOf('v-') == 0 || attr.indexOf('@') == 0) {
+            if(attr.indexOf('v-') == 0) {
+                return 1
+            }else {
+                return 2
+            }
+        }else {
+            return 0  
+        }
+        // return attr.indexOf('v-') == 0 || attr.indexOf('@') == 0;
     },
     isEventDirective: function(dir) {
-        return dir.indexOf('on:') === 0;
+        return dir.indexOf('on:') === 0 || dir.indexOf('@') === 0;
     },
     isElementNode: function (node) {
         return node.nodeType == 1;
