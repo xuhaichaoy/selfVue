@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>demo</title>
-    <script src="./js/appData.js"></script>
+    <script src="./appData.js"></script>
 
 </head>
 <style>
@@ -16,7 +16,7 @@
         <h2>{{title}}</h2>
         <input v-model="name">
         <h1>{{name}}</h1>
-        <input type="text" v-model="input" @keyUp="blur" v-on:click="click">
+        <input type="text" v-model="input" @keyUp="keyUp" @click="click">
         <button @click="clickMe">click me!</button>
     </div>
 </body>
@@ -35,11 +35,11 @@
             clickMe: function () {
                 this.title = 'hello world'
             },
-            blur: function() {
-                console.log(111111111111)
+            keyUp: function() {
+                console.log("键盘抬起事件")
             },
             click: function() {
-                console.log(2222222222222)
+                console.log("点击事件")
             }
         }
         

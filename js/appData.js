@@ -137,7 +137,6 @@ Compile.prototype = {
             if (isDirect) {
                 if(isDirect === 2) {
                     // '@' 事件
-                    
                     attrName = attrName.replace('@', 'v-on:')
                 }
                 var exp = attr.value;
@@ -201,7 +200,6 @@ Compile.prototype = {
         }else {
             return 0  
         }
-        // return attr.indexOf('v-') == 0 || attr.indexOf('@') == 0;
     },
     isEventDirective: function(dir) {
         return dir.indexOf('on:') === 0 || dir.indexOf('@') === 0;
